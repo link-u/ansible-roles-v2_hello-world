@@ -2,12 +2,8 @@ os: linux
 dist: bionic
 language: shell
 
-distro:
+env:
   - MOLECULE_DISTRO=ubuntu1804
   - MOLECULE_DISTRO=ubuntu2004
 
-ansible_ver:
-  - ANSIBLE_VER=ansible28
-  - ANSIBLE_VER=ansible29
-
-script: echo ${MOLECULE_DISTRO}-${ANSIBLE_VER}
+script: echo ${MOLECULE_DISTRO}
