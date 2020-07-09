@@ -21,8 +21,8 @@ before_install:
                  ruby-libvirt qemu libvirt-dev zlib1g-dev ruby-dev \
                  python3 python3-pip python3-setuptools
     sudo dpkg -i vagrant_2.2.9_x86_64.deb
-    vagrant plugin install vagrant-libvirt
-    vagrant box add --provider libvirt generic/"${DISTRO}"
-    pip3 install tox
+    sudo vagrant plugin install vagrant-libvirt
+    sudo vagrant box add --provider libvirt generic/"${DISTRO}"
+    sudo pip3 install tox
 
-script: tox -e ${TOX_ENV}
+script: sudo tox -e ${TOX_ENV}
