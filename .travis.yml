@@ -3,7 +3,10 @@ dist: bionic
 language: shell
 
 env:
-  - [MOLECULE_DISTRO=ubuntu1804, MOLECULE_DISTRO=ubuntu2004]
-  - [ANSIBLE_VER=ansible28, ANSIBLE_VER=ansible29]
+  jobs:
+    - TOX_ENV=ubuntu1804-ansible28
+    - TOX_ENV=ubuntu1804-ansible29
+    - TOX_ENV=ubuntu2004-ansible28
+    - TOX_ENV=ubuntu2004-ansible29
 
-script: echo ${MOLECULE_DISTRO}-${ANSIBLE_VER}
+script: echo ${TOX_ENV}
