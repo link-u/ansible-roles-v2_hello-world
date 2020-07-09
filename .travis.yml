@@ -26,5 +26,5 @@ env:
 
 # script: tox -e ${TOX_ENV}
 
-before_install: echo ${TOX_ENV}
+before_install: echo -n ${TOX_ENV} | awk -F '-' '{print $1}'
 script: echo hello
