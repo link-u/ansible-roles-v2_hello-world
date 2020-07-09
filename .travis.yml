@@ -3,6 +3,8 @@ dist: bionic
 language: shell
 
 env:
+  global:
+    - VAGRANT_VER=2.2.9
   jobs:
     - TOX_ENV=ubuntu1804-ansible28
     - TOX_ENV=ubuntu1804-ansible29
@@ -12,15 +14,15 @@ env:
 before_install:
   - |
     DISTRO="$(echo -n ${TOX_ENV} | awk -F '-' '{print $1}')"
-    curl -Os https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
-    curl -Os https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_SHA256SUMS
-    sha256sum -c vagrant_2.2.9_SHA256SUMS 2>&1 | grep OK
+    curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_x86_64.deb
+    curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_SHA256SUMS
+    sha256sum -c vagrant_"${VAGRANT_VER}"_SHA256SUMS 2>&1 | grep OK
     sudo apt-get update
     sudo apt-get install ovmf qemu-kvm libvirt-daemon-system libvirt-clients \
                  bridge-utils virt-manager qemu-utils qemu-block-extra \
                  ruby-libvirt qemu libvirt-dev zlib1g-dev ruby-dev \
                  python3 python3-pip python3-setuptools
-    sudo dpkg -i vagrant_2.2.9_x86_64.deb
+    sudo dpkg -i vagrant_"${VAGRANT_VER}"_x86_64.deb
     rm vagrant_*
     sudo vagrant plugin install vagrant-libvirt
     sudo vagrant box add --provider libvirt generic/"${DISTRO}"
