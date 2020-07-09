@@ -16,6 +16,6 @@ before_install:
     sha256sum -c vagrant_2.2.9_SHA256SUMS 2>&1 | grep OK
     sudo apt-get update && sudo apt-get install ovmf qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager qemu-utils qemu-block-extra ruby-libvirt qemu libvirt-dev zlib1g-dev ruby-dev
     sudo dpkg -i vagrant_2.2.9_x86_64.deb
-    sudo vagrant plugin install vagrant-libvirt
+    vagrant plugin install vagrant-libvirt
 
 script: echo ${TOX_ENV}
