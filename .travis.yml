@@ -1,0 +1,12 @@
+os: linux
+dist: bionic
+language: shell
+
+env:
+  - TOX_ENV=ubuntu1804-ansible28
+  - TOX_ENV=ubuntu2004-ansible28
+  - TOX_ENV=ubuntu1804-ansible29
+  - TOX_ENV=ubuntu2004-ansible29
+
+script: echo $TOX_ENV
+
