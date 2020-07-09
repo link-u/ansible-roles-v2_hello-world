@@ -3,4 +3,4 @@
   hosts: all
   become: yes
   roles:
-    - { role: "ansible-roles_hello-world", tags: ["hello-world"] }
+    - { role: "ansible-roles-v2_hello-world", tags: ["hello-world"] }
