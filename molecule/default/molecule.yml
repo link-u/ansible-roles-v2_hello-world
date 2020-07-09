@@ -8,7 +8,7 @@ driver:
     name: libvirt
 
 platforms:
-  - name: ${MOLECULE_DISTRO:-ubuntu2004}-${ANSIBLE_VER:-ansible}-${GIT_COMMIT:-commit}
+  - name: ${MOLECULE_DISTRO:-ubuntu2004}-${ANSIBLE_VER:-ansible}
     box: generic/${MOLECULE_DISTRO:-ubuntu2004}
 
 provisioner:

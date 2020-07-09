@@ -27,6 +27,7 @@ script:
   - |
     which tox
     tox --version
+    tox -e ${TOX_ENV}
 
 # script:
 #   - |
