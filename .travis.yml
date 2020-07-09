@@ -23,12 +23,4 @@ before_install:
     vagrant plugin install vagrant-libvirt
     pip3 install tox
 
-script:
-  - |
-    which tox
-    tox --version
-    tox -e ${TOX_ENV}
-
-# script:
-#   - |
-#     tox -e ${TOX_ENV}
+script: tox -e ${TOX_ENV}
