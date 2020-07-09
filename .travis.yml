@@ -6,14 +6,13 @@ env:
   global:
     - VAGRANT_VER=2.2.9
   jobs:
-    - TOX_ENV=ubuntu1804-ansible28
-    - TOX_ENV=ubuntu1804-ansible29
-    - TOX_ENV=ubuntu2004-ansible28
-    - TOX_ENV=ubuntu2004-ansible29
+    - DISTRO=ubuntu1804  ANSIBLE_VER=ansible28
+    - DISTRO=ubuntu1804  ANSIBLE_VER=ansible29
+    - DISTRO=ubuntu2004  ANSIBLE_VER=ansible28
+    - DISTRO=ubuntu2004  ANSIBLE_VER=ansible29
 
 before_install:
   - |
-    DISTRO="$(echo -n ${TOX_ENV} | awk -F '-' '{print $1}')"
     curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_x86_64.deb
     curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_SHA256SUMS
     sha256sum -c vagrant_"${VAGRANT_VER}"_SHA256SUMS 2>&1 | grep OK
@@ -28,4 +27,4 @@ before_install:
     sudo vagrant box add --provider libvirt generic/"${DISTRO}"
     sudo pip3 install tox
 
-script: sudo tox -e ${TOX_ENV}
+script: sudo tox -e ${DISTRO}-${ANSIBLE_VER}
