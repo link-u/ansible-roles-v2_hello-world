@@ -1,0 +1,5 @@
+---
+# defaults/main.yml (hello-world)
+# Prefix : hello
+
+hello_dest_path: "/tmp/hello.txt"

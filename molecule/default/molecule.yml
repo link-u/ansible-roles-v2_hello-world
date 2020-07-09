@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  name: vagrant
+  provider:
+    name: libvirt
+
+platforms:
+  - name: ${MOLECULE_DISTRO:-ubuntu2004}-${ANSIBLE_VER:-ansible}-${GIT_COMMIT:-commit}
+    box: generic/${MOLECULE_DISTRO:-ubuntu2004}
+
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ../common/playbooks/playbook.yml
+  optoins:
+    diff: true
+  inventory:
+    links:
+      group_vars: group_vars
+
+verifier:
+  name: testinfra
+  directory: ../common/tests
+  options:
+    s: true  # pytest の -s を有効化. テスト時に print() の標準出力結果を見るため.
