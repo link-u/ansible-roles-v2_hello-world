@@ -7,6 +7,11 @@ driver:
   provider:
     name: libvirt
 
+lint: |
+  set -e
+  yamllint molecule
+  ansible-lint .
+
 platforms:
   - name: ${MOLECULE_DISTRO:-ubuntu2004}-${ANSIBLE_VER:-ansible}
     box: generic/${MOLECULE_DISTRO:-ubuntu2004}
