@@ -5,41 +5,29 @@ language: shell
 env:
   global:
     - VAGRANT_VER=2.2.9
-    - LINTING=False
   jobs:
     - DISTRO=ubuntu1804  ANSIBLE_VER=ansible28
     - DISTRO=ubuntu1804  ANSIBLE_VER=ansible29
     - DISTRO=ubuntu2004  ANSIBLE_VER=ansible28
     - DISTRO=ubuntu2004  ANSIBLE_VER=ansible29
-    - LINTING=True
 
 
 before_install:
   - |
-    if [ "${LINTING}" = False ]; then
-      curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_x86_64.deb
-      curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_SHA256SUMS
-      sha256sum -c vagrant_"${VAGRANT_VER}"_SHA256SUMS 2>&1 | grep OK
-      sudo apt-get update
-      sudo apt-get install ovmf qemu-kvm libvirt-daemon-system libvirt-clients \
-                   bridge-utils virt-manager qemu-utils qemu-block-extra \
-                   ruby-libvirt qemu libvirt-dev zlib1g-dev ruby-dev \
-                   python3 python3-pip python3-setuptools
-      sudo dpkg -i vagrant_"${VAGRANT_VER}"_x86_64.deb
-      rm vagrant_*
-      sudo vagrant plugin install vagrant-libvirt
-      sudo vagrant box add --provider libvirt generic/"${DISTRO}"
-      sudo pip3 install tox
-    else
-      sudo apt-get update
-      sudo apt-get install python3 python3-pip python3-setuptools
-      sudo pip3 install tox
-    fi
+    curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_x86_64.deb
+    curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_SHA256SUMS
+    sha256sum -c vagrant_"${VAGRANT_VER}"_SHA256SUMS 2>&1 | grep OK
+    sudo apt-get update
+    sudo apt-get install ovmf qemu-kvm libvirt-daemon-system libvirt-clients \
+                 bridge-utils virt-manager qemu-utils qemu-block-extra \
+                 ruby-libvirt qemu libvirt-dev zlib1g-dev ruby-dev \
+                 python3 python3-pip python3-setuptools
+    sudo dpkg -i vagrant_"${VAGRANT_VER}"_x86_64.deb
+    rm vagrant_*
+    sudo vagrant plugin install vagrant-libvirt
+    sudo vagrant box add --provider libvirt generic/"${DISTRO}"
+    sudo pip3 install tox
 
-script:
+script: 
   - |
-    if [ "${LINTING}" = False ]; then
-      sudo tox -e ${DISTRO}-${ANSIBLE_VER}
-    else
-      sudo tox -e lint
-    fi
+    sudo tox -e ${DISTRO}-${ANSIBLE_VER}
