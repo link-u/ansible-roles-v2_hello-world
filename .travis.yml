@@ -16,7 +16,6 @@ env:
 
 before_install:
   - |
-    echo ${TOX_ENV}
     if [ "${LINTING}" = False ]; then
       curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_x86_64.deb
       curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_SHA256SUMS
@@ -37,4 +36,4 @@ before_install:
       sudo pip3 install tox
     fi
 
-script: sudo tox -e ${DISTRO}-${ANSIBLE_VER}
+script: sudo tox -e ${TOX_ENV}
