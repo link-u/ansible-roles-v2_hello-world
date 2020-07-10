@@ -5,6 +5,9 @@ import testinfra.utils.ansible_runner
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
+def test_dummy(host):
+    assert True
+
 def test_hello_dest_path(host):
     ansible_vars = host.ansible.get_variables()
     filepath = ansible_vars["hello_dest_path"]
