@@ -9,7 +9,6 @@ driver:
 
 lint: |
   set -e
-  yamllint molecule
   ansible-lint .
 
 platforms:

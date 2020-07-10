@@ -5,14 +5,17 @@ language: shell
 env:
   global:
     - VAGRANT_VER=2.2.9
+    - LINTING=False
   jobs:
     - DISTRO=ubuntu1804  ANSIBLE_VER=ansible28
     - DISTRO=ubuntu1804  ANSIBLE_VER=ansible29
     - DISTRO=ubuntu2004  ANSIBLE_VER=ansible28
     - DISTRO=ubuntu2004  ANSIBLE_VER=ansible29
 
+
 before_install:
   - |
+    echo ${LINTING}
     curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_x86_64.deb
     curl -Os https://releases.hashicorp.com/vagrant/"${VAGRANT_VER}"/vagrant_"${VAGRANT_VER}"_SHA256SUMS
     sha256sum -c vagrant_"${VAGRANT_VER}"_SHA256SUMS 2>&1 | grep OK
