@@ -16,6 +16,8 @@ before_install:
   - |
     sudo apt-get update
     sudo apt-get install lxd lxd-tools qemu-block-extra python3 python3-pip python3-setuptools
+    sudo lxd init --auto
+    sudo usermod -aG lxd $(whoami)
     sudo pip3 install tox
 
 script: 
