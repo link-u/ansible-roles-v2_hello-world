@@ -11,8 +11,6 @@ branches:
     - /^develop/(.)*$/
 
 env:
-  global:
-    - VAGRANT_VER=2.2.9
   jobs:
     - DISTRO=ubuntu1804  ANSIBLE_VER=ansible28
     - DISTRO=ubuntu1804  ANSIBLE_VER=ansible29
