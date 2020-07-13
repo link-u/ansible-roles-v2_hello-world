@@ -3,21 +3,21 @@ dependency:
   name: galaxy
 
 driver:
-  name: vagrant
-  provider:
-    name: libvirt
+  name: lxd
 
 lint: |
   set -e
   ansible-lint .
 
 platforms:
-  - name: ${MOLECULE_DISTRO:-ubuntu2004}-${ANSIBLE_VER:-ansible}
-    box: generic/${MOLECULE_DISTRO:-ubuntu2004}
+  - name: ${MOLECULE_DISTRO:-focal}-${ANSIBLE_VER:-ansible}
+    alias: ubuntu/${MOLECULE_DISTRO:-focal}/amd64
 
 provisioner:
   name: ansible
   playbooks:
+    create: ../common/playbooks/create.yml
+    destroy: ../common/playbooks/destroy.yml
     converge: ../common/playbooks/playbook.yml
   optoins:
     diff: true
