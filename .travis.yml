@@ -7,6 +7,8 @@ branches:
   only:
     - master
     - /^feature/(.)*$/
+    - /^hotfix/(.)*$/
+    - /^develop/(.)*$/
 
 env:
   global:
@@ -16,7 +18,6 @@ env:
     - DISTRO=ubuntu1804  ANSIBLE_VER=ansible29
     - DISTRO=ubuntu2004  ANSIBLE_VER=ansible28
     - DISTRO=ubuntu2004  ANSIBLE_VER=ansible29
-
 
 before_install:
   - |
