@@ -3,4 +3,4 @@
   hosts: all
   become: yes
   roles:
-    - { role: "{{ lookup('env', 'PWD') }}" }
+    - { role: "{{ (playbook_dir ~ '/../../..') | realpath }}" }
