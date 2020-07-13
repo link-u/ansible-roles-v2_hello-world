@@ -2,6 +2,12 @@ os: linux
 dist: bionic
 language: shell
 
+# safelist
+branches:
+  only:
+    - master
+    - /^feature/(.)*$/
+
 env:
   global:
     - VAGRANT_VER=2.2.9
