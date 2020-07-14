@@ -1,0 +1,3 @@
+[submodule "infra-ci_for_role"]
+	path = infra-ci_for_role
+	url = https://github.com/link-u/infra-ci_for_role.git
