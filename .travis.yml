@@ -27,4 +27,4 @@ before_install:
 
 script: 
   - |
-    sudo tox -e ${DISTRO}-${ANSIBLE_VER} -c infra-ci_for_role/tox.ini
+    sudo tox -e ${DISTRO}-${ANSIBLE_VER} -c ansible-ci-module/tox.ini
