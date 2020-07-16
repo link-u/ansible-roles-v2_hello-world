@@ -1,7 +1,17 @@
 name: ansible ci
 
 on:
-  - push
+  push:
+    branches:
+      - master
+      - feature/*
+      - hotfix/*
+      - develop/*
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - master
 
 jobs:
   create-matrix:
