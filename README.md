@@ -1,6 +1,6 @@
 # ansible-roles-v2_hello-world
-![Travis](
-https://travis-ci.org/link-u/ansible-roles-v2_hello-world.svg?branch=master)
+
+![ansible ci](https://github.com/link-u/ansible-roles-v2_hello-world/workflows/ansible%20ci/badge.svg)
 
 ## 概要
 
