@@ -27,7 +27,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          submodules: 'recursive'
+          submodules: recursive
           fetch-depth: 0
 
       - name: Create tox env list
@@ -60,7 +60,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          submodules: 'recursive'
+          submodules: recursive
           fetch-depth: 0
 
       - name: ansible-ci
