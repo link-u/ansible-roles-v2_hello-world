@@ -3,15 +3,9 @@ name: ansible ci
 on:
   push:
     branches:
-      - master
-      - feature/*
-      - hotfix/*
-      - develop/*
+      - "**"
     tags:
       - v*
-  pull_request:
-    branches:
-      - master
 
 jobs:
   create-matrix:
