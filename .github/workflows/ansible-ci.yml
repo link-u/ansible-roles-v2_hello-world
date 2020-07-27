@@ -27,10 +27,7 @@ jobs:
       - name: Create tox env list
         id: set-matrix
         run: |
-          TOX_ENV=$(tox -l -c ansible-ci-module/tox.ini | \
-            sed -e "s/^/\"/g" -e "s/$/\", /g" | \
-            tr -d "\n" | \
-            sed -e "s/, $//")
+          TOX_ENV=$(python3 ansible-ci-module/scripts/toxenv_to_json.py)
           echo "::set-output name=matrix::{\"tox_env\":[${TOX_ENV}]}"
 
   ansible-ci:
