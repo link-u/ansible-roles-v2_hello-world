@@ -1,0 +1,12 @@
+---
+platforms:
+  - name: ${MOLECULE_DISTRO}-${ANSIBLE_VER}-default
+    source:
+      alias: ubuntu/${MOLECULE_DISTRO}/amd64
+    host_vars:
+      username: alice
+      password: hogehoge
+
+provisioner:
+  playbooks:
+    converge: "./playbooks/converge.yml"
