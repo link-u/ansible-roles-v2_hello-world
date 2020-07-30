@@ -4,8 +4,8 @@ platforms:
     source:
       alias: ubuntu/${MOLECULE_DISTRO}/amd64
     host_vars:
-      username: alice
-      password: hogehoge
+      test_username: alice
+      test_password: hogehoge
 
 provisioner:
   playbooks:
