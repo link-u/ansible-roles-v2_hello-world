@@ -1,0 +1,15 @@
+---
+- name: Converge
+  hosts: all
+  become: yes
+  tasks:
+    - name: Check defined __host_vars
+      debug:
+        var: __host_vars
+      vars:
+        - __host_vars:
+            local_ipv4: "{{ local_ipv4 }}"
+            test_username: "{{ test_username }}"
+            test_password: "{{ test_password }}"
+  roles:
+    - { role: "{{ (playbook_dir ~ '/../../..') | realpath }}" }
