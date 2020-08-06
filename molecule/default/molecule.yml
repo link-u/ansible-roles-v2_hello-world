@@ -10,8 +10,3 @@ platforms:
 provisioner:
   playbooks:
     converge: "./playbooks/converge.yml"
-
-verifier:
-  additional_files_or_dirs:
-    - ${TESTINFRA_DIR}
-    - "./tests/test_*.py"
