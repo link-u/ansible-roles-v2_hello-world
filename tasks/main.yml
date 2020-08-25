@@ -6,3 +6,6 @@
   copy:
     content: "Hello, ansible!"
     dest: "{{ hello_dest_path }}"
+    owner: "root"
+    group: "root"
+    mode: "0644"
